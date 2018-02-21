@@ -1,0 +1,20 @@
+version: '3'
+services:
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - 5672:5672
+    tty: true
+  app:
+    image: golang:latest
+    working_dir: '/go/src/app'
+    command: sh ./app/start_cmd.sh
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:5000
+    links:
+      - rabbitmq
+    tty: true
+
