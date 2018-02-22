@@ -6,14 +6,27 @@ services:
     ports:
       - 5672:5672
     tty: true
-  app:
-    image: golang:latest
+  server_go:
+    hostname: server_go
+    build: server_go
     working_dir: '/go/src/app'
-    command: sh ./app/start_cmd.sh
+    command: sh ./start_cmd.sh
     volumes:
-      - .:/go/src/app
+      - ./server_go:/go/src/app
     ports:
-      - 8080:5000
+      - 5000:5000
+    links:
+      - rabbitmq
+    tty: true
+  client_go:
+    hostname: client_go
+    build: client_go
+    working_dir: '/go/src/web'
+    command: sh ./start_cmd.sh
+    volumes:
+      - ./client_go:/go/src/web
+    ports:
+      - 8080:8080
     links:
       - rabbitmq
     tty: true

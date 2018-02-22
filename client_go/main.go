@@ -12,14 +12,14 @@ func main() {
 
     // 全てのリクエストで差し込みたいミドルウェア（ログとか）はここ
     e.Use(middleware.Logger())
-    e.Use(middleware.Recover())
 
     // ルーティング
     e.GET("/", handler.Hello())
     e.GET("/hello", handler.Hello())
     e.GET("/calc/:calcValue", handler.Clac())
+    e.GET("/send/:sendValue", handler.Send())
 
     // サーバー起動
-    e.Start(":5000")    //ポート番号指定してね
+    e.Start(":8080")
 }
 
