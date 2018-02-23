@@ -18,7 +18,7 @@ func main() {
 	e.Use(middleware.Logger())
 
 	// making a connection
-	conn, err := amqp.Dial("amqp://guest:rabbit@rabbitmq:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	if err != nil {
 		e.Logger.Fatalf("Failed to connect to RabbitMQ: %v", err)
 	}

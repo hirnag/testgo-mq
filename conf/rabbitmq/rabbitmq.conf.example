@@ -13,7 +13,7 @@
 ## By default, RabbitMQ will listen on all interfaces, using
 ## the standard (reserved) AMQP 0-9-1 and 1.0 port.
 ##
-listeners.tcp.default = 5672
+# listeners.tcp.default = 5672
 
 
 ## To listen on a specific interface, provide an IP address with port.
@@ -67,7 +67,7 @@ listeners.tcp.default = 5672
 
 ## Uncomment the following line if you want to allow access to the
 ## guest user from anywhere on the network.
-loopback_users.guest = false
+# loopback_users.guest = false
 
 ## TLS configuration.
 ##
@@ -183,9 +183,9 @@ loopback_users.guest = false
 ## config items control what gets created.
 ## Relevant doc guide: http://rabbitmq.com/access-control.html
 ##
-default_vhost = /
-default_user = guest
-default_pass = guest
+# default_vhost = /
+# default_user = guest
+# default_pass = guest
 
 # default_permissions.configure = .*
 # default_permissions.read = .*
@@ -403,7 +403,7 @@ default_pass = guest
 
 ## Explicitly enable/disable hipe compilation.
 ##
-hipe_compile = false
+# hipe_compile = false
 
 ## Timeout used when waiting for Mnesia tables in a cluster to
 ## become available.
@@ -485,9 +485,9 @@ hipe_compile = false
 ## Also set the listener to use TLS and provide TLS options.
 ##
 
-management.listener.port = 15672
+# management.listener.port = 15672
 # management.listener.ip   = 127.0.0.1
-management.listener.ssl  = false
+# management.listener.ssl  = true
 
 # management.listener.ssl_opts.cacertfile = /path/to/cacert.pem
 # management.listener.ssl_opts.certfile   = /path/to/cert.pem

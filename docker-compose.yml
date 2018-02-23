@@ -2,15 +2,18 @@ version: '3'
 services:
   rabbitmq:
     hostname: rabbitmq
-    image: rabbitmq:latest
+    image: rabbitmq:3-management
+    volumes:
+      - ./conf/rabbitmq:/etc/rabbitmq
     ports:
+      - 15672:15672
       - 5672:5672
     tty: true
   server_go:
     hostname: server_go
     build: server_go
     working_dir: '/go/src/app'
-    command: sh ./start_cmd.sh
+    command: sh ./start_cmd.sh rabbitmq:5672
     volumes:
       - ./server_go:/go/src/app
     ports:
@@ -30,4 +33,3 @@ services:
     links:
       - rabbitmq
     tty: true
-
